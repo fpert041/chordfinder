@@ -1,25 +1,32 @@
 {
-  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "F88CDEFD22EE23487E8B226424E00A2D5458E74A",
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "A37317D5A1056785B0C50E3F2956B74CB545C991",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
 
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "A37317D5A1056785B0C50E3F2956B74CB545C991" : 9223372036854775807,
     "20DC6287C6D318433B681296E0BF364C4882CD47" : 9223372036854775807,
     "F88CDEFD22EE23487E8B226424E00A2D5458E74A" : 9223372036854775807
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "F000C31C-88F6-4F18-9AA4-ECA9C7F25799",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
-    "20DC6287C6D318433B681296E0BF364C4882CD47" : "",
-    "F88CDEFD22EE23487E8B226424E00A2D5458E74A" : "CppCustomExternals\/"
+    "A37317D5A1056785B0C50E3F2956B74CB545C991" : "chord-finder\/",
+    "20DC6287C6D318433B681296E0BF364C4882CD47" : "..\/..",
+    "F88CDEFD22EE23487E8B226424E00A2D5458E74A" : ".."
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "chordfinder~",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
-  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "MyExternals\/chord-finder\/chordfinder~.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "chordfinder~.xcodeproj",
   "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Cycling74\/max-sdk.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "20DC6287C6D318433B681296E0BF364C4882CD47"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/fpert041\/chordfinder.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "A37317D5A1056785B0C50E3F2956B74CB545C991"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "http:\/\/gitlab.doc.gold.ac.uk\/fpert041\/maxcpp.git",

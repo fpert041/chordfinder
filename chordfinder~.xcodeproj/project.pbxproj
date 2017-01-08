@@ -8,7 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		C7BA0A211E2175B400C7B350 /* MaxAudioAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7BA0A201E2175B400C7B350 /* MaxAudioAPI.framework */; };
-		C7E107801E22BD5300D55B23 /* chordfinder~.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C7E1077F1E22BD5300D55B23 /* chordfinder~.cpp */; };
+		C7E107841E22C98400D55B23 /* chordfinder~.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C7E107831E22C98400D55B23 /* chordfinder~.cpp */; };
+		C7E1078D1E22C9A300D55B23 /* _kiss_fft_guts.h in Headers */ = {isa = PBXBuildFile; fileRef = C7E107871E22C9A300D55B23 /* _kiss_fft_guts.h */; };
+		C7E1078E1E22C9A300D55B23 /* COPYING in Resources */ = {isa = PBXBuildFile; fileRef = C7E107881E22C9A300D55B23 /* COPYING */; };
+		C7E1078F1E22C9A300D55B23 /* kiss_fft.c in Sources */ = {isa = PBXBuildFile; fileRef = C7E107891E22C9A300D55B23 /* kiss_fft.c */; };
+		C7E107901E22C9A300D55B23 /* kiss_fft.h in Headers */ = {isa = PBXBuildFile; fileRef = C7E1078A1E22C9A300D55B23 /* kiss_fft.h */; };
+		C7E107911E22C9A300D55B23 /* kissfft.hh in Headers */ = {isa = PBXBuildFile; fileRef = C7E1078B1E22C9A300D55B23 /* kissfft.hh */; };
+		C7E107921E22C9A300D55B23 /* README in Resources */ = {isa = PBXBuildFile; fileRef = C7E1078C1E22C9A300D55B23 /* README */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -16,8 +22,14 @@
 		2FBBEAE508F335360078DB84 /* chordfinder~.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "chordfinder~.mxo"; sourceTree = BUILT_PRODUCTS_DIR; };
 		36C5493616F558AA0054C037 /* maxcpp6.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = maxcpp6.h; sourceTree = "<group>"; };
 		C7BA0A201E2175B400C7B350 /* MaxAudioAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MaxAudioAPI.framework; path = "../../../source/c74support/msp-includes/MaxAudioAPI.framework"; sourceTree = "<group>"; };
-		C7E1077F1E22BD5300D55B23 /* chordfinder~.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "chordfinder~.cpp"; sourceTree = "<group>"; };
 		C7E107811E22C1CE00D55B23 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		C7E107831E22C98400D55B23 /* chordfinder~.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "chordfinder~.cpp"; sourceTree = "<group>"; };
+		C7E107871E22C9A300D55B23 /* _kiss_fft_guts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _kiss_fft_guts.h; sourceTree = "<group>"; };
+		C7E107881E22C9A300D55B23 /* COPYING */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = COPYING; sourceTree = "<group>"; };
+		C7E107891E22C9A300D55B23 /* kiss_fft.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = kiss_fft.c; sourceTree = "<group>"; };
+		C7E1078A1E22C9A300D55B23 /* kiss_fft.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kiss_fft.h; sourceTree = "<group>"; };
+		C7E1078B1E22C9A300D55B23 /* kissfft.hh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = kissfft.hh; sourceTree = "<group>"; };
+		C7E1078C1E22C9A300D55B23 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,9 +48,10 @@
 			isa = PBXGroup;
 			children = (
 				C7E107811E22C1CE00D55B23 /* README.md */,
+				C7E107851E22C9A300D55B23 /* libs */,
+				C7E107821E22C98400D55B23 /* src */,
 				36C5491F16F557E00054C037 /* maxcpp */,
 				22CF10220EE984600054F513 /* maxmspsdk.xcconfig */,
-				C7E1077F1E22BD5300D55B23 /* chordfinder~.cpp */,
 				C7BA0A201E2175B400C7B350 /* MaxAudioAPI.framework */,
 				19C28FB4FE9D528D11CA2CBB /* Products */,
 			);
@@ -62,6 +75,35 @@
 			path = ../../maxcpp;
 			sourceTree = SOURCE_ROOT;
 		};
+		C7E107821E22C98400D55B23 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				C7E107831E22C98400D55B23 /* chordfinder~.cpp */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		C7E107851E22C9A300D55B23 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				C7E107861E22C9A300D55B23 /* kiss_fft130 */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		C7E107861E22C9A300D55B23 /* kiss_fft130 */ = {
+			isa = PBXGroup;
+			children = (
+				C7E107871E22C9A300D55B23 /* _kiss_fft_guts.h */,
+				C7E107881E22C9A300D55B23 /* COPYING */,
+				C7E107891E22C9A300D55B23 /* kiss_fft.c */,
+				C7E1078A1E22C9A300D55B23 /* kiss_fft.h */,
+				C7E1078B1E22C9A300D55B23 /* kissfft.hh */,
+				C7E1078C1E22C9A300D55B23 /* README */,
+			);
+			path = kiss_fft130;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -69,6 +111,9 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7E1078D1E22C9A300D55B23 /* _kiss_fft_guts.h in Headers */,
+				C7E107901E22C9A300D55B23 /* kiss_fft.h in Headers */,
+				C7E107911E22C9A300D55B23 /* kissfft.hh in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,6 +170,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7E107921E22C9A300D55B23 /* README in Resources */,
+				C7E1078E1E22C9A300D55B23 /* COPYING in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -145,7 +192,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C7E107801E22BD5300D55B23 /* chordfinder~.cpp in Sources */,
+				C7E1078F1E22C9A300D55B23 /* kiss_fft.c in Sources */,
+				C7E107841E22C98400D55B23 /* chordfinder~.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
