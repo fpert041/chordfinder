@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "F88CDEFD22EE23487E8B226424E00A2D5458E74A",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "20DC6287C6D318433B681296E0BF364C4882CD47" : 9223372036854775807,
+    "F88CDEFD22EE23487E8B226424E00A2D5458E74A" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "FC9DDA14-FBA4-4BC1-B274-D06790DCC8ED",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "20DC6287C6D318433B681296E0BF364C4882CD47" : "",
+    "F88CDEFD22EE23487E8B226424E00A2D5458E74A" : "CppCustomExternals\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "exampleMsp~",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "examples\/msp\/exampleMsp~.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Cycling74\/max-sdk.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "20DC6287C6D318433B681296E0BF364C4882CD47"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "http:\/\/gitlab.doc.gold.ac.uk\/fpert041\/maxcpp.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "F88CDEFD22EE23487E8B226424E00A2D5458E74A"
+    }
+  ]
+}
