@@ -15,6 +15,10 @@
 		C7E107901E22C9A300D55B23 /* kiss_fft.h in Headers */ = {isa = PBXBuildFile; fileRef = C7E1078A1E22C9A300D55B23 /* kiss_fft.h */; };
 		C7E107911E22C9A300D55B23 /* kissfft.hh in Headers */ = {isa = PBXBuildFile; fileRef = C7E1078B1E22C9A300D55B23 /* kissfft.hh */; };
 		C7E107921E22C9A300D55B23 /* README in Resources */ = {isa = PBXBuildFile; fileRef = C7E1078C1E22C9A300D55B23 /* README */; };
+		C7E107981E22CBE000D55B23 /* ChordDetector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C7E107941E22CBE000D55B23 /* ChordDetector.cpp */; };
+		C7E107991E22CBE000D55B23 /* ChordDetector.h in Headers */ = {isa = PBXBuildFile; fileRef = C7E107951E22CBE000D55B23 /* ChordDetector.h */; };
+		C7E1079A1E22CBE000D55B23 /* Chromagram.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C7E107961E22CBE000D55B23 /* Chromagram.cpp */; };
+		C7E1079B1E22CBE000D55B23 /* Chromagram.h in Headers */ = {isa = PBXBuildFile; fileRef = C7E107971E22CBE000D55B23 /* Chromagram.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +34,10 @@
 		C7E1078A1E22C9A300D55B23 /* kiss_fft.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kiss_fft.h; sourceTree = "<group>"; };
 		C7E1078B1E22C9A300D55B23 /* kissfft.hh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = kissfft.hh; sourceTree = "<group>"; };
 		C7E1078C1E22C9A300D55B23 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
+		C7E107941E22CBE000D55B23 /* ChordDetector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChordDetector.cpp; sourceTree = "<group>"; };
+		C7E107951E22CBE000D55B23 /* ChordDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChordDetector.h; sourceTree = "<group>"; };
+		C7E107961E22CBE000D55B23 /* Chromagram.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Chromagram.cpp; sourceTree = "<group>"; };
+		C7E107971E22CBE000D55B23 /* Chromagram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Chromagram.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +56,7 @@
 			isa = PBXGroup;
 			children = (
 				C7E107811E22C1CE00D55B23 /* README.md */,
+				C7E107931E22CBE000D55B23 /* chord-detector */,
 				C7E107851E22C9A300D55B23 /* libs */,
 				C7E107821E22C98400D55B23 /* src */,
 				36C5491F16F557E00054C037 /* maxcpp */,
@@ -104,6 +113,17 @@
 			path = kiss_fft130;
 			sourceTree = "<group>";
 		};
+		C7E107931E22CBE000D55B23 /* chord-detector */ = {
+			isa = PBXGroup;
+			children = (
+				C7E107941E22CBE000D55B23 /* ChordDetector.cpp */,
+				C7E107951E22CBE000D55B23 /* ChordDetector.h */,
+				C7E107961E22CBE000D55B23 /* Chromagram.cpp */,
+				C7E107971E22CBE000D55B23 /* Chromagram.h */,
+			);
+			path = "chord-detector";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -114,6 +134,8 @@
 				C7E1078D1E22C9A300D55B23 /* _kiss_fft_guts.h in Headers */,
 				C7E107901E22C9A300D55B23 /* kiss_fft.h in Headers */,
 				C7E107911E22C9A300D55B23 /* kissfft.hh in Headers */,
+				C7E107991E22CBE000D55B23 /* ChordDetector.h in Headers */,
+				C7E1079B1E22CBE000D55B23 /* Chromagram.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -192,6 +214,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7E1079A1E22CBE000D55B23 /* Chromagram.cpp in Sources */,
+				C7E107981E22CBE000D55B23 /* ChordDetector.cpp in Sources */,
 				C7E1078F1E22C9A300D55B23 /* kiss_fft.c in Sources */,
 				C7E107841E22C98400D55B23 /* chordfinder~.cpp in Sources */,
 			);

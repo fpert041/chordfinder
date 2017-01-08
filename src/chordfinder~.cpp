@@ -8,7 +8,7 @@ public:
 	Chordfinder(t_symbol * sym, long ac, t_atom * av) {
 		setupIO(2, 2); 
 		post("chordfinder: object created");
-        post("Debugging: current version - 0.01");
+        post("Debugging: current version - 0.02");
 	}
 	
 	~Chordfinder() {
