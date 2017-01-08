@@ -19,12 +19,13 @@
 		C7E107991E22CBE000D55B23 /* ChordDetector.h in Headers */ = {isa = PBXBuildFile; fileRef = C7E107951E22CBE000D55B23 /* ChordDetector.h */; };
 		C7E1079A1E22CBE000D55B23 /* Chromagram.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C7E107961E22CBE000D55B23 /* Chromagram.cpp */; };
 		C7E1079B1E22CBE000D55B23 /* Chromagram.h in Headers */ = {isa = PBXBuildFile; fileRef = C7E107971E22CBE000D55B23 /* Chromagram.h */; };
+		C7E1079D1E22D19900D55B23 /* maxcpp.h in Headers */ = {isa = PBXBuildFile; fileRef = C7E1079C1E22D19900D55B23 /* maxcpp.h */; };
+		C7E1079F1E22D1AA00D55B23 /* max.attr.h in Headers */ = {isa = PBXBuildFile; fileRef = C7E1079E1E22D1AA00D55B23 /* max.attr.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		22CF10220EE984600054F513 /* maxmspsdk.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = maxmspsdk.xcconfig; path = ../../maxmspsdk.xcconfig; sourceTree = SOURCE_ROOT; };
 		2FBBEAE508F335360078DB84 /* chordfinder~.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "chordfinder~.mxo"; sourceTree = BUILT_PRODUCTS_DIR; };
-		36C5493616F558AA0054C037 /* maxcpp6.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = maxcpp6.h; sourceTree = "<group>"; };
 		C7BA0A201E2175B400C7B350 /* MaxAudioAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MaxAudioAPI.framework; path = "../../../source/c74support/msp-includes/MaxAudioAPI.framework"; sourceTree = "<group>"; };
 		C7E107811E22C1CE00D55B23 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		C7E107831E22C98400D55B23 /* chordfinder~.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "chordfinder~.cpp"; sourceTree = "<group>"; };
@@ -38,6 +39,8 @@
 		C7E107951E22CBE000D55B23 /* ChordDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChordDetector.h; sourceTree = "<group>"; };
 		C7E107961E22CBE000D55B23 /* Chromagram.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Chromagram.cpp; sourceTree = "<group>"; };
 		C7E107971E22CBE000D55B23 /* Chromagram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Chromagram.h; sourceTree = "<group>"; };
+		C7E1079C1E22D19900D55B23 /* maxcpp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = maxcpp.h; sourceTree = "<group>"; };
+		C7E1079E1E22D1AA00D55B23 /* max.attr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = max.attr.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,7 +81,8 @@
 		36C5491F16F557E00054C037 /* maxcpp */ = {
 			isa = PBXGroup;
 			children = (
-				36C5493616F558AA0054C037 /* maxcpp6.h */,
+				C7E1079E1E22D1AA00D55B23 /* max.attr.h */,
+				C7E1079C1E22D19900D55B23 /* maxcpp.h */,
 			);
 			name = maxcpp;
 			path = ../../maxcpp;
@@ -132,8 +136,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				C7E1078D1E22C9A300D55B23 /* _kiss_fft_guts.h in Headers */,
+				C7E1079F1E22D1AA00D55B23 /* max.attr.h in Headers */,
 				C7E107901E22C9A300D55B23 /* kiss_fft.h in Headers */,
 				C7E107911E22C9A300D55B23 /* kissfft.hh in Headers */,
+				C7E1079D1E22D19900D55B23 /* maxcpp.h in Headers */,
 				C7E107991E22CBE000D55B23 /* ChordDetector.h in Headers */,
 				C7E1079B1E22CBE000D55B23 /* Chromagram.h in Headers */,
 			);

@@ -1,14 +1,37 @@
+//
+//  CHORDFINDER
+//  Max MSP External for harmonical analysis of an audio signal
+//  Based on an implementation of the work by Adam Stark and using the C++ template "MaxCpp"
+//
+//  Copyright © 2017 Francesco Perticarari. All rights reserved.
+//
+
 #include "maxcpp.h"
+#include "../chord-detector/Chromagram.h"
+#include "../chord-detector/ChordDetector.h"
 
-// inherit from the MSP base class, template-specialized for myself:
+#include <string>
+#include <sstream>
+#include <iostream>
+#include <vector>
 
+
+
+// inherit from the MSP base class and build the external using C++ code
 class Chordfinder : public MspCpp<Chordfinder> {
 public:
+    int frameSize = 512;
+    int sampleRate = 44100;
+    
+    Chromagram c;
+    ChordDetector finder;
 
-	Chordfinder(t_symbol * sym, long ac, t_atom * av) {
+	Chordfinder(t_symbol * sym, long ac, t_atom * av)
+        : c(frameSize, sampleRate)
+    {
 		setupIO(2, 2); 
 		post("chordfinder: object created");
-        post("Debugging: current version - 0.02");
+        post("Debugging: current version - 0.035");
 	}
 	
 	~Chordfinder() {
