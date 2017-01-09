@@ -1,7 +1,7 @@
 # CHORDFINDER
 ============
 
-A chord identifier C++ external for Max MSP
+## A chord identifier C++ external for Max MSP
 ============
 
 
@@ -23,7 +23,7 @@ Bang - resend last chord data on data outlets
 
 setRMS <float> - this sets a cutoff volume to prevent noise generating random chords.
 
-frame <int> -rate this sets the number of 512 sample frames the Chromagram detector waits before generating a new chromagram. Default is 1 for the most rapid response. Increase this to reduce CPU use. 
+rate <int> - (frame rate) this sets the number of 512 sample frames the Chromagram detector waits before generating a new chromagram. Default is 1 for the most rapid response. Increase this to reduce CPU use. 
 
 
 ###outlet messages:

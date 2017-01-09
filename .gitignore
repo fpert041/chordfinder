@@ -5,10 +5,10 @@ sysbuild
 *.opensdf
 log.txt
 Build
-DerivedData
 build
 *.o
 *.dylib
+DerivedData
 
 *.xcworkspace
 xcuserdata
