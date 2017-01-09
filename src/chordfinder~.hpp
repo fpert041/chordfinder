@@ -10,8 +10,8 @@
 #define chordfinder__hpp
 
 #include "maxcpp.h"
-#include "newChromagram.h" // chroma-based spectrum analysis class
-#include "ChordDetector.h" //chord detection class
+#include "newChromagram.hpp" // chroma-based spectrum analysis class
+#include "newChordDetector.hpp" //chord detection class
 
 #include <string>
 #include <sstream>
@@ -35,10 +35,14 @@ public:
     
     //create chromagram and chord detector objects
     newChromagram c;
-    ChordDetector finder;
+    newChordDetector finder;
     std::vector<double> frame; //FFT-chromogram processing window
-    int samplesTakenIn = 0;
-    std::string chord_name; //string variable to store a chord name
+    int samplesTakenIn = 0; //currently buffered sumples
+    
+    int currentchord = 0; // store chordID
+    int lastchord = 0;
+    std::string chordName; // string variable to store a chord name
+    double RMSCutoff; // signal control: don't analyse quiet noise
     
     int outletsNum = 4; //number of "control" outlets
     void **	m_outlets = 0; //variable for max (non-audio) outlets -- note: 0 here == nullptr
@@ -52,6 +56,7 @@ public:
     
     //-----------------------helper functions--------------------------
     void test(long inlet, t_symbol * s, long ac, t_atom * av);
+    void midiList(int baseNote, int chordType);
     
 };
 

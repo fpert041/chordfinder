@@ -4,7 +4,7 @@
 //
 //Original Algorithm and implementation by Adam Stark (Copyright (C) 2008-2014  Queen Mary University of London)
 
-#include "newChromagram.h"
+#include "newChromagram.hpp"
 
 //-----------------------------------------------------------------------------------
 newChromagram::newChromagram(int frameSize,int fs) : referenceFrequency(130.81278265), bufferSize(8192), numHarmonics(2), numOctaves(2), numBinsToSearch(2)
@@ -142,7 +142,7 @@ void newChromagram::setChromaCalculationInterval(int numSamples)
 //-----------------------------------------------------------------------------------
 std::vector<double> newChromagram::getChromagram()
 {
-    return chromagram;
+    return chromagram; //watch out: this is not normalised!
 }
 
 //-----------------------------------------------------------------------------------

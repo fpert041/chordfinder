@@ -5,11 +5,11 @@
 			"major" : 7,
 			"minor" : 3,
 			"revision" : 1,
-			"architecture" : "x86",
+			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 59.0, 104.0, 481.0, 650.0 ],
+		"rect" : [ 177.0, 79.0, 742.0, 707.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -38,11 +38,37 @@
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-6",
+					"linecount" : 17,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 22.0, 580.0, 704.0, 248.0 ],
+					"style" : "",
+					"text" : "OUTPUT:\n1 & 2: signal passthrough\n\n3: Chord name\n\n4: Chord ID \n    -this being a 12-bit string identifying the intervals of the chord  e.g: [ 1 0 0 0 1 0 0 01 0 0 0 ]\n    -it also contains information regarding the root note ( a number between 0 and 11, which has been multiplied by 10000 and added to the binary string represented as an integer)\n    -e.g: D7th would be root_note D = 2, * 10000 = 20000, + 2194 = 22194 Em root_note E = 4, * 10000 = 40000, + 2320 = 42320\n\n5: midi notes as a list + an initial symbolic string\n\n6: flag (1 or 0) whether or not the signal is oud enough to tricgger the detection\n\n\n\n"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-27",
+					"maxclass" : "toggle",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "int" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 599.0, 523.0, 24.0, 24.0 ],
+					"style" : ""
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-17",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 168.0, 639.0, 34.0, 22.0 ],
+					"patching_rect" : [ 207.0, 508.0, 34.0, 22.0 ],
 					"style" : "",
 					"text" : "print"
 				}
@@ -50,25 +76,15 @@
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-25",
-					"maxclass" : "message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 393.0, 669.0, 50.0, 22.0 ],
-					"style" : ""
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"id" : "obj-24",
+					"linecount" : 2,
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 331.0, 669.0, 50.0, 22.0 ],
-					"style" : ""
+					"patching_rect" : [ 447.600006, 502.5, 124.0, 35.0 ],
+					"style" : "",
+					"text" : "midi_notes 64 67 71 74"
 				}
 
 			}
@@ -79,8 +95,9 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 263.0, 669.0, 50.0, 22.0 ],
-					"style" : ""
+					"patching_rect" : [ 337.200012, 550.0, 50.0, 22.0 ],
+					"style" : "",
+					"text" : "42322"
 				}
 
 			}
@@ -91,9 +108,9 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 183.0, 669.0, 50.0, 22.0 ],
+					"patching_rect" : [ 221.800003, 550.0, 50.0, 22.0 ],
 					"style" : "",
-					"text" : "\"0 1 1\""
+					"text" : "Emin7"
 				}
 
 			}
@@ -103,32 +120,21 @@
 					"maxclass" : "ezdac~",
 					"numinlets" : 2,
 					"numoutlets" : 0,
-					"patching_rect" : [ 22.0, 664.5, 45.0, 45.0 ],
+					"patching_rect" : [ 22.0, 514.5, 45.0, 45.0 ],
 					"style" : ""
 				}
 
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-21",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 321.25, 458.0, 105.0, 22.0 ],
-					"style" : "",
-					"text" : "print chromogram"
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"id" : "obj-20",
+					"linecount" : 2,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 22.0, 72.0, 426.0, 20.0 ],
+					"patching_rect" : [ 22.0, 72.0, 426.0, 33.0 ],
 					"style" : "",
-					"text" : "A chord detection external for Max (MacOS) by Francesco Perticarari"
+					"text" : "A chord detection external for Max (MacOS) by Francesco Perticarari\nCopyright (c) 2016-2017"
 				}
 
 			}
@@ -138,7 +144,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 22.0, 94.0, 426.0, 20.0 ],
+					"patching_rect" : [ 22.0, 107.0, 426.0, 20.0 ],
 					"style" : "",
 					"text" : "Interpret input audio using an FFT analysis and return harmonical content",
 					"textcolor" : [ 0.32549, 0.345098, 0.372549, 1.0 ]
@@ -151,40 +157,40 @@
 					"filename" : "helpdetails.js",
 					"id" : "obj-5",
 					"ignoreclick" : 1,
-					"jsarguments" : [ "ChordID~" ],
+					"jsarguments" : [ "Chordfinder~" ],
 					"maxclass" : "jsui",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 22.0, 24.0, 226.0, 46.0 ]
+					"patching_rect" : [ 22.0, 24.0, 312.0, 46.0 ]
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"allowreorder" : 1,
-					"clipheight" : 24.833334,
+					"clipheight" : 21.142857,
 					"data" : 					{
 						"clips" : [ 							{
 								"filename" : "vibes-a1.aif",
 								"filekind" : "audiofile",
 								"loop" : 0,
 								"content_state" : 								{
-									"timestretch" : [ 0 ],
-									"slurtime" : [ 0.0 ],
-									"play" : [ 0 ],
-									"pitchcorrection" : [ 0 ],
-									"speed" : [ 1.0 ],
-									"originallengthms" : [ 0.0 ],
-									"formantcorrection" : [ 0 ],
-									"quality" : [ "basic" ],
-									"formant" : [ 1.0 ],
 									"mode" : [ "basic" ],
 									"followglobaltempo" : [ 0 ],
-									"originallength" : [ 0.0, "ticks" ],
+									"originallengthms" : [ 0.0 ],
 									"pitchshift" : [ 1.0 ],
 									"basictuning" : [ 440 ],
+									"quality" : [ "basic" ],
+									"play" : [ 0 ],
+									"pitchcorrection" : [ 0 ],
+									"originallength" : [ 0.0, "ticks" ],
+									"timestretch" : [ 0 ],
+									"slurtime" : [ 0.0 ],
+									"speed" : [ 1.0 ],
+									"formant" : [ 1.0 ],
+									"formantcorrection" : [ 0 ],
 									"originaltempo" : [ 120.0 ],
 									"pitchshiftcent" : [ 0 ]
 								}
@@ -195,20 +201,20 @@
 								"filekind" : "audiofile",
 								"loop" : 1,
 								"content_state" : 								{
-									"timestretch" : [ 0 ],
-									"slurtime" : [ 0.0 ],
-									"play" : [ 0 ],
-									"pitchcorrection" : [ 0 ],
-									"speed" : [ 1.0 ],
-									"originallengthms" : [ 0.0 ],
-									"formantcorrection" : [ 0 ],
-									"quality" : [ "basic" ],
-									"formant" : [ 1.0 ],
 									"mode" : [ "basic" ],
 									"followglobaltempo" : [ 0 ],
-									"originallength" : [ 0.0, "ticks" ],
+									"originallengthms" : [ 0.0 ],
 									"pitchshift" : [ 1.0 ],
 									"basictuning" : [ 440 ],
+									"quality" : [ "basic" ],
+									"play" : [ 0 ],
+									"pitchcorrection" : [ 0 ],
+									"originallength" : [ 0.0, "ticks" ],
+									"timestretch" : [ 0 ],
+									"slurtime" : [ 0.0 ],
+									"speed" : [ 1.0 ],
+									"formant" : [ 1.0 ],
+									"formantcorrection" : [ 0 ],
 									"originaltempo" : [ 120.0 ],
 									"pitchshiftcent" : [ 0 ]
 								}
@@ -219,20 +225,20 @@
 								"filekind" : "audiofile",
 								"loop" : 0,
 								"content_state" : 								{
-									"timestretch" : [ 0 ],
-									"slurtime" : [ 0.0 ],
-									"play" : [ 0 ],
-									"pitchcorrection" : [ 0 ],
-									"speed" : [ 1.0 ],
-									"originallengthms" : [ 0.0 ],
-									"formantcorrection" : [ 0 ],
-									"quality" : [ "basic" ],
-									"formant" : [ 1.0 ],
 									"mode" : [ "basic" ],
 									"followglobaltempo" : [ 0 ],
-									"originallength" : [ 0.0, "ticks" ],
+									"originallengthms" : [ 0.0 ],
 									"pitchshift" : [ 1.0 ],
 									"basictuning" : [ 440 ],
+									"quality" : [ "basic" ],
+									"play" : [ 0 ],
+									"pitchcorrection" : [ 0 ],
+									"originallength" : [ 0.0, "ticks" ],
+									"timestretch" : [ 0 ],
+									"slurtime" : [ 0.0 ],
+									"speed" : [ 1.0 ],
+									"formant" : [ 1.0 ],
+									"formantcorrection" : [ 0 ],
 									"originaltempo" : [ 120.0 ]
 								}
 
@@ -242,20 +248,20 @@
 								"filekind" : "audiofile",
 								"loop" : 1,
 								"content_state" : 								{
-									"timestretch" : [ 0 ],
-									"slurtime" : [ 0.0 ],
-									"play" : [ 0 ],
-									"pitchcorrection" : [ 0 ],
-									"speed" : [ 1.0 ],
-									"originallengthms" : [ 0.0 ],
-									"formantcorrection" : [ 0 ],
-									"quality" : [ "basic" ],
-									"formant" : [ 1.0 ],
 									"mode" : [ "basic" ],
 									"followglobaltempo" : [ 0 ],
-									"originallength" : [ 0.0, "ticks" ],
+									"originallengthms" : [ 0.0 ],
 									"pitchshift" : [ 1.0 ],
 									"basictuning" : [ 440 ],
+									"quality" : [ "basic" ],
+									"play" : [ 0 ],
+									"pitchcorrection" : [ 0 ],
+									"originallength" : [ 0.0, "ticks" ],
+									"timestretch" : [ 0 ],
+									"slurtime" : [ 0.0 ],
+									"speed" : [ 1.0 ],
+									"formant" : [ 1.0 ],
+									"formantcorrection" : [ 0 ],
 									"originaltempo" : [ 120.0 ],
 									"pitchshiftcent" : [ 0 ]
 								}
@@ -266,20 +272,20 @@
 								"filekind" : "audiofile",
 								"loop" : 0,
 								"content_state" : 								{
-									"timestretch" : [ 0 ],
-									"slurtime" : [ 0.0 ],
-									"play" : [ 0 ],
-									"pitchcorrection" : [ 0 ],
-									"speed" : [ 1.0 ],
-									"originallengthms" : [ 0.0 ],
-									"formantcorrection" : [ 0 ],
-									"quality" : [ "basic" ],
-									"formant" : [ 1.0 ],
 									"mode" : [ "basic" ],
 									"followglobaltempo" : [ 0 ],
-									"originallength" : [ 0.0, "ticks" ],
+									"originallengthms" : [ 0.0 ],
 									"pitchshift" : [ 1.0 ],
 									"basictuning" : [ 440 ],
+									"quality" : [ "basic" ],
+									"play" : [ 0 ],
+									"pitchcorrection" : [ 0 ],
+									"originallength" : [ 0.0, "ticks" ],
+									"timestretch" : [ 0 ],
+									"slurtime" : [ 0.0 ],
+									"speed" : [ 1.0 ],
+									"formant" : [ 1.0 ],
+									"formantcorrection" : [ 0 ],
 									"originaltempo" : [ 120.0 ]
 								}
 
@@ -289,22 +295,45 @@
 								"filekind" : "audiofile",
 								"loop" : 0,
 								"content_state" : 								{
-									"timestretch" : [ 0 ],
-									"slurtime" : [ 0.0 ],
-									"play" : [ 0 ],
-									"pitchcorrection" : [ 0 ],
-									"speed" : [ 1.0 ],
-									"originallengthms" : [ 0.0 ],
-									"formantcorrection" : [ 0 ],
-									"quality" : [ "basic" ],
-									"formant" : [ 1.0 ],
 									"mode" : [ "basic" ],
 									"followglobaltempo" : [ 0 ],
-									"originallength" : [ 0.0, "ticks" ],
+									"originallengthms" : [ 0.0 ],
 									"pitchshift" : [ 1.0 ],
 									"basictuning" : [ 440 ],
+									"quality" : [ "basic" ],
+									"play" : [ 0 ],
+									"pitchcorrection" : [ 0 ],
+									"originallength" : [ 0.0, "ticks" ],
+									"timestretch" : [ 0 ],
+									"slurtime" : [ 0.0 ],
+									"speed" : [ 1.0 ],
+									"formant" : [ 1.0 ],
+									"formantcorrection" : [ 0 ],
 									"originaltempo" : [ 120.0 ],
 									"pitchshiftcent" : [ 0 ]
+								}
+
+							}
+, 							{
+								"filename" : "/Applications/Max.app/Contents/Resources/C74/media/msp/drumLoop.aif",
+								"filekind" : "audiofile",
+								"loop" : 0,
+								"content_state" : 								{
+									"mode" : [ "basic" ],
+									"followglobaltempo" : [ 0 ],
+									"originallengthms" : [ 0.0 ],
+									"pitchshift" : [ 1.0 ],
+									"basictuning" : [ 440 ],
+									"quality" : [ "basic" ],
+									"play" : [ 0 ],
+									"pitchcorrection" : [ 0 ],
+									"originallength" : [ 0.0, "ticks" ],
+									"timestretch" : [ 0 ],
+									"slurtime" : [ 0.0 ],
+									"speed" : [ 1.0 ],
+									"formant" : [ 1.0 ],
+									"formantcorrection" : [ 0 ],
+									"originaltempo" : [ 120.0 ]
 								}
 
 							}
@@ -316,7 +345,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 5,
 					"outlettype" : [ "signal", "signal", "signal", "", "dictionary" ],
-					"patching_rect" : [ 22.0, 131.0, 369.0, 155.0 ],
+					"patching_rect" : [ 22.0, 144.0, 369.0, 155.0 ],
 					"style" : ""
 				}
 
@@ -330,56 +359,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 456.0, 371.0, 50.0, 22.0 ],
-					"style" : ""
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-8",
-					"maxclass" : "number",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "", "bang" ],
-					"parameter_enable" : 0,
-					"patching_rect" : [ 421.0, 497.5, 50.0, 22.0 ],
-					"style" : ""
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-7",
-					"maxclass" : "number",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "", "bang" ],
-					"parameter_enable" : 0,
-					"patching_rect" : [ 221.5, 497.5, 90.0, 22.0 ],
-					"style" : ""
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-6",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 121.75, 458.0, 67.0, 22.0 ],
-					"style" : "",
-					"text" : "print chord"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-9",
-					"maxclass" : "ezdac~",
-					"numinlets" : 2,
-					"numoutlets" : 0,
-					"patching_rect" : [ 53.0, 497.5, 45.0, 45.0 ],
+					"patching_rect" : [ 456.0, 364.0, 50.0, 22.0 ],
 					"style" : ""
 				}
 
@@ -395,7 +375,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 456.0, 202.5, 20.0, 140.0 ],
+					"patching_rect" : [ 456.0, 206.0, 20.0, 140.0 ],
 					"style" : ""
 				}
 
@@ -407,7 +387,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 301.0, 310.0, 24.0, 24.0 ],
+					"patching_rect" : [ 328.0, 322.0, 24.0, 24.0 ],
 					"style" : ""
 				}
 
@@ -419,7 +399,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 53.0, 351.0, 24.0, 24.0 ],
+					"patching_rect" : [ 53.0, 364.0, 24.0, 24.0 ],
 					"style" : ""
 				}
 
@@ -432,7 +412,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 215.0, 312.0, 50.0, 22.0 ],
+					"patching_rect" : [ 219.0, 322.0, 50.0, 22.0 ],
 					"style" : ""
 				}
 
@@ -444,7 +424,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 219.0, 351.0, 50.0, 22.0 ],
+					"patching_rect" : [ 219.0, 364.0, 50.0, 22.0 ],
 					"style" : "",
 					"text" : "rate $1"
 				}
@@ -457,7 +437,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 146.5, 309.0, 24.0, 24.0 ],
+					"patching_rect" : [ 146.5, 322.0, 24.0, 24.0 ],
 					"style" : ""
 				}
 
@@ -469,22 +449,9 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 328.0, 351.0, 50.0, 22.0 ],
+					"patching_rect" : [ 328.0, 364.0, 50.0, 22.0 ],
 					"style" : "",
 					"text" : "rms $1"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-1",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 5,
-					"outlettype" : [ "", "", "", "", "" ],
-					"patching_rect" : [ 22.0, 423.0, 92.0, 22.0 ],
-					"style" : "",
-					"text" : "achordID~.mxo"
 				}
 
 			}
@@ -495,7 +462,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 6,
 					"outlettype" : [ "signal", "signal", "", "", "", "" ],
-					"patching_rect" : [ 22.0, 588.0, 596.0, 22.0 ],
+					"patching_rect" : [ 22.0, 466.0, 596.0, 22.0 ],
 					"style" : "",
 					"text" : "/Users/pesa/Documents/UNI/MC2/Ass_2/max-sdk/externals/myExternals/cppExternals-build/chordfinder~.mxo"
 				}
@@ -503,60 +470,6 @@
 			}
  ],
 		"lines" : [ 			{
-				"patchline" : 				{
-					"destination" : [ "obj-21", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-1", 3 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-6", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-1", 1 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-7", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-1", 2 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-8", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-1", 4 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-9", 1 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-1", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-9", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-1", 0 ]
-				}
-
-			}
-, 			{
 				"patchline" : 				{
 					"destination" : [ "obj-3", 0 ],
 					"disabled" : 0,
@@ -567,28 +480,10 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-1", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-11", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
 					"destination" : [ "obj-3", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-12", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-1", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-13", 0 ]
 				}
 
 			}
@@ -621,19 +516,10 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-1", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-18", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
 					"destination" : [ "obj-4", 1 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 119.0, 571.0, 608.5, 571.0 ],
+					"midpoints" : [ 119.0, 446.0, 608.5, 446.0 ],
 					"source" : [ "obj-18", 1 ]
 				}
 
@@ -644,15 +530,6 @@
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-18", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-1", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-3", 0 ]
 				}
 
 			}
@@ -712,7 +589,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-25", 1 ],
+					"destination" : [ "obj-27", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-4", 5 ]
@@ -752,6 +629,12 @@
 			}
 , 			{
 				"name" : "anton.aif",
+				"bootpath" : "C74:/media/msp",
+				"type" : "AIFF",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "drumLoop.aif",
 				"bootpath" : "C74:/media/msp",
 				"type" : "AIFF",
 				"implicit" : 1

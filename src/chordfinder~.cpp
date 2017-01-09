@@ -18,7 +18,9 @@ Chordfinder::Chordfinder(t_symbol * sym, long ac, t_atom * av)
     {
         c.setChromaCalculationInterval(frameSize); //Set the interval at which the chromagram is calculated in audio frames
         
-        chord_name = "";
+        RMSCutoff = 0.000001; // initial rms cutoff value
+
+        chordName = "";
         frame.resize(frameSize); //make processing window equal to its appropriate frame_size
         for(int i=0; i<frame.size(); ++i) { frame[i]=0; } //and set its values to zero
         
@@ -29,7 +31,7 @@ Chordfinder::Chordfinder(t_symbol * sym, long ac, t_atom * av)
         
 		setupIO(2, 2); //setup MSP inlets and oultes
 		post("chordfinder: object created");
-        post("chordfinder: current version - 0.07");
+        post("chordfinder: current version - 0.2");
 	}
 	
 	Chordfinder::~Chordfinder() {
@@ -47,7 +49,7 @@ Chordfinder::Chordfinder(t_symbol * sym, long ac, t_atom * av)
 // default signal processing method is called 'perform'
 
 void Chordfinder::perform(double **ins, long numins, double **outs, long numouts, long sampleframes) {
-        // example code to invert inputs
+///// example code to invert inputs
 //        for (long channel = 0; channel < numouts; channel++) {
 //            double * in = ins[channel];
 //            double * out = outs[channel];
@@ -55,11 +57,17 @@ void Chordfinder::perform(double **ins, long numins, double **outs, long numouts
 //                out[i] = -in[i];
 //            }
 //        }
+    
+    //variables used to calculate velume of input signal
+    double rms = 0;
+    double rmsTot = 0;
+    int bob;
        
         double * in0 = ins[0];
         double * out0 = outs[0]; //setup double precision pointers for the input and output buffered-samples
         double * in1 = ins[1];
         double * out1 = outs[1];
+    
             
         for (long i=0; i < sampleframes; ++i) {
             out0[i] = in0[i]; //passthrough signal ch 1
@@ -70,48 +78,46 @@ void Chordfinder::perform(double **ins, long numins, double **outs, long numouts
                         samplesTakenIn++; //increment counter of samples taken in
                         
                 } else {//...esle...
+                    
+                    //calculate RMS audio power for our samples
+                    for (bob = 0; bob < frameSize; bob++) {
+                        rmsTot += pow(frame[bob],2);
+                    }
+                    rms = rmsTot / frameSize;
+                    
+                    //if the signal is powerful enough:
+                    if (rms > RMSCutoff){
                         c.processAudioFrame(frame); //then process the buffer to extract a chromogram
+                        outlet_int(m_outlets[3], 1); //and flag this
+                    } else {
+                        outlet_int(m_outlets[3], 0); // flag that signal is too quiet
+                    }
+                    
+                    if (c.isReady()) { //if the chroma-feature spectrum is ready
+                            
+                        // ** WARNING: HERE I USE A C-STYLE ARRAY, but the object supports vectors
+                        // MAKE SURE POINTERS DON'T MESS UP THE CODE --play safe if needed
+                        std::vector<double> chroma = c.getChromagram(); //define vector to store chroma-feature
+                        finder.detectChord(&chroma[0]); //call the chord detection function using the current chromagram (use the array/pointer type for efficiency)
                         
-                        if (c.isReady()) { //if the chroma-feature spectrum is ready
+                        currentchord = 10000 * finder.rootNote + finder.chordID; //create and ID for the chord (inc. root)
+                        chordName = finder.chordName; //read and store chord detected name
+                        
+                        const char *this_chordname = chordName.c_str(); //cast name to c-string "* char"
                             
-                            // ** WARNING: HERE I USE A C-STYLE ARRAY, but the object supports vectors
-                            // MAKE SURE POINTERS DON'T MESS UP THE CODE --play safe if needed
-                            std::vector<double> chroma = c.getChromagram(); //define vector to store chroma-feature
-                            finder.detectChord(&chroma[0]); //call the chord detection function using the current chromagram (use the array/pointer type for efficiency)
+                        if (currentchord != lastchord){ //check if a new chord has been detected
+                            outlet_anything(m_outlets[0], gensym(this_chordname), 0, NULL); //output chord name on outlet "0" of type "anything"
+                            outlet_int(m_outlets[1], currentchord); //output chord ID on outlet "1" of type "int"
                             
-                            
-                            /** The root note of the detected chord */
-                            int rootN = finder.rootNote;
-                            std::ostringstream convert0;   // stream used for the conversion
-                            convert0 << rootN;      // insert the textual representation of the int in the characters in the stream
-                            std::string s = convert0.str(); // set a string to the contents of the stream
-                            
-                            /** The quality of the detected chord (Major, Minor, etc) */
-                            std::ostringstream convert2;
-                            convert2 << finder.quality;
-                            s+= " " + convert2.str();
-                            
-                            /** Any other intervals that describe the chord, e.g. 7th */
-                            std::ostringstream convert3;
-                            convert3 << finder.intervals;
-                            s+= " " + convert2.str();
-                            
-                            //****---debug---*****//
-                            //std::ostringstream convert;
-                            //convert << s;
-                            //std::string debug = convert.str();
-                            //post(("root quality other_invetervals : " + debug).c_str()); //debugging check - OK
-                            //****---debug---*****//
-                            
-                            if (chord_name.compare(s) != 0 ){ //check if a new chord has been detected
-                                chord_name = s;
-                                const char *this_chordname = chord_name.c_str(); //prepare the chord name to be sent out
-                                outlet_anything(m_outlets[0], gensym(this_chordname), 0, NULL); //output chord name
-                            
-                            } //end_if
+                            midiList(finder.rootNote, finder.chordID); //work out a list of MIDI notes for this chord
                         } //end_if
                         
-                        samplesTakenIn = 0; //reset counter of currently buffered samples
+                        lastchord = currentchord;
+ 
+                    }//end_if
+                    
+                    samplesTakenIn = 0; //reset counter of currently buffered samples
+                    
                 } //end_if
                     
         }//end_loop
@@ -134,6 +140,29 @@ void Chordfinder::test(long inlet, t_symbol * s, long ac, t_atom * av) {
 //-----------------------------------------------------------------------
 //HELPER FUNCTIONS
 
+//create and output a list of midi note numbers that identify the current chord
+void Chordfinder::midiList(int baseNote, int chordType) {
+    //variables to store root and interval notes (contained in the binary chordID)
+    int root;
+    int notes;
+    
+    t_atom outList[12]; //variable to store output list
+    int noteCount = 0;
+    
+    root = 60 + baseNote; //set root at middle C + input chord root
+    notes = chordType; //get information from a 12-bits string expressed as an INT
+    for (int index = 0; index < 12; index++){ //loop through all chord interval components...
+        notes *= 2; //...by doing a bit-shift
+        if (notes > 4095) { //check if the interval we are checking is present in the current chord
+            atom_setlong(&outList[noteCount], t_atom_long (root + index)); //if so place it on the outgoing list (after calculating where it is located in respect to chord MIDI root)
+            notes = notes - 4096; //...now discard used info and move on
+            noteCount++; //keep track of how many notes we have created
+        }
+    }
+    
+    outlet_anything(m_outlets[2], gensym("midi_notes"), noteCount, &outList[0]); //output list out of the generic max outlet "2"
+}
+
 	
 //	// optional method: gets called when the dsp chain is modified
 //	// if not given, the MspCpp will use Example::perform by default
@@ -141,5 +170,6 @@ void Chordfinder::test(long inlet, t_symbol * s, long ac, t_atom * av) {
 //		// specify a perform method manually:
 //		REGISTER_PERFORM(Example, perform);
 //	}
+
 
 
