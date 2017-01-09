@@ -16,7 +16,10 @@ To compile iot and use it:
 
 REFERENCE: This project will probably use KISS_FFT, MaxCpp (my update on Graham Wakefield's original), the Chromogram/Chord detector algorithms defined by Adam Stark, as well as the Max 7 SDK (by Cycling '74) -- all the credit for these open-source files should be give to their authors
 
-![logo](maxcpp.png) MaxCpp
+
+![logo](maxcpp.png) 
+
+MaxCpp
 ==========================
 
 ## Licence

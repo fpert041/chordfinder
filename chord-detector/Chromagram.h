@@ -1,39 +1,19 @@
-//=======================================================================
-/** @file Chromagram.h
- *  @brief Chromagram - a class for calculating the chromagram in real-time
- *  @author Adam Stark
- *  @copyright Copyright (C) 2008-2014  Queen Mary University of London
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-//=======================================================================
+//This chroma-based spectrum-analysing C++ class is inspired by the Chromagram/ChordDetector by Adam Stark.
+//(https://github.com/adamstark/Chord-Detector-and-Chromagram)
+//Copyright (C) 2016-2017  Francesco Perticarari
+//
+//Original Algorithm and implementation by Adam Stark (Copyright (C) 2008-2014  Queen Mary University of London)
 
 #ifndef __CHROMAGRAM_H
 #define __CHROMAGRAM_H
 
 #define _USE_MATH_DEFINES
-#define USE_KISS_FFT
+
 #include <math.h>
 #include <vector>
 
-#ifdef USE_FFTW
-#include "fftw3.h"
-#endif
-
-#ifdef USE_KISS_FFT
 #include "kiss_fft.h"
-#endif
+
 
 //=======================================================================
 /** A class for calculating a Chromagram from input audio
@@ -133,18 +113,9 @@ private:
     int chromaCalculationInterval;
     bool chromaReady;
 
-#ifdef USE_FFTW
-    fftw_plan p;
-	fftw_complex *complexOut;
-    fftw_complex *complexIn;
-#endif
-    
-#ifdef USE_KISS_FFT
     kiss_fft_cfg cfg;
     kiss_fft_cpx *fftIn;
     kiss_fft_cpx *fftOut;
-#endif
-    
 };
 
 #endif /* defined(__CHROMAGRAM_H) */
