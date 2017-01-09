@@ -18,7 +18,7 @@ Chordfinder::Chordfinder(t_symbol * sym, long ac, t_atom * av)
     {
         c.setChromaCalculationInterval(frameSize); //Set the interval at which the chromagram is calculated in audio frames
         
-        RMSCutoff = 0.000001; // initial rms cutoff value
+        RMSCutoff = 0.0025; // initial rms cutoff value
 
         chordName = "";
         frame.resize(frameSize); //make processing window equal to its appropriate frame_size
@@ -30,7 +30,7 @@ Chordfinder::Chordfinder(t_symbol * sym, long ac, t_atom * av)
         }
         
 		setupIO(2, 2); //setup MSP inlets and oultes
-		post("chordfinder: object created");
+		post("chordfinder: object created - default signal volume cutoff value = 0.0025");
         post("chordfinder: current version - 0.2");
 	}
 	
@@ -128,13 +128,83 @@ void Chordfinder::perform(double **ins, long numins, double **outs, long numouts
 //-----------------------------------------------------------------------
 //MAX INTERFACE METHODS
 
+//outputs last calculated chord values
 void Chordfinder::bang(long inlet) {
-		post("bang in inlet %i!", inlet);
-        
-	}
-void Chordfinder::test(long inlet, t_symbol * s, long ac, t_atom * av) {
-		post("%s in inlet %i (%i args)", s->s_name, inlet, ac);
-	}
+    //variables to store root and 12-bit chordID integers
+    int thisRoot;
+    int chordIdentity;
+    
+    thisRoot = int(currentchord / 10000); //retrive current root by reversing chordID
+    chordIdentity = currentchord - (10000 * thisRoot); //retrive chord-type identity by removing root information
+    const char *this_chordname = chordName.c_str(); //set chord name ready for output as a c-style "* char" string
+    
+    //output values from appropriate outlets
+    outlet_anything(m_outlets[0], gensym(this_chordname), 0, NULL);
+    outlet_int(m_outlets[1], currentchord);
+    midiList(thisRoot, chordIdentity);
+    
+}
+
+void Chordfinder::setRMS(long inlet, t_symbol * s, long ac, t_atom * av) {
+    // set the rms cutoff value (float)
+    
+    //THIS IS HOW YOU RETRIVE NUMERICAL ARGUMENT FROM MAX MESSAGES:
+    t_atom * this_atom;
+    float this_number;
+    this_atom = &av[0];
+    this_number = atom_getfloat(this_atom);
+    
+    if (this_number > 0.00001){
+        RMSCutoff = this_number; //set RMS cutoff to the specified one
+    }
+}
+
+//reset frame rate of the chroma calculation interval (multiples of 512 sample-windows)
+void Chordfinder::rate(long inlet, t_symbol * s, long ac, t_atom * av) {
+    t_atom * this_atom;
+    long this_number;
+    
+    this_atom = &av[0];
+    this_number = atom_getlong(this_atom);
+    if (this_number > 0) {
+        c.setChromaCalculationInterval(512 * this_number);
+    }
+    
+    //printf("%ld", this_number);
+    //post("chordfinder: current frame rate: %ld");
+}
+
+//inlet/outlet assist popup
+void Chordfinder::assist(void *b, long m, long a, char *s) { //template function that gets triggered when "ASSIST_INLET"
+                                                            //is invoked by Max
+                                                            //param "a" identify the inlet/outlet
+    if (m == ASSIST_INLET) { //inlet
+        switch (a) {
+            case 0: sprintf(s,
+                            "\nrate <int> - set the number of 512 sample frames to allow prior to chord identification\nrms <float> - set the rms cutoff value");
+                break;
+        }
+    }
+    else {	// outlet
+        switch (a) {
+            case 0 : sprintf(s, "signal out");
+                break;
+            case 1: sprintf(s, "text Chordname");
+                break;
+            case 2: sprintf(s, "int chord id");
+                break;
+            case 3: sprintf(s, "list midi notes of chord");
+                break;
+            case 4: sprintf(s, "signal - 0 for no recognisable signal, 1 otherwise");
+                break;
+        }
+    }
+}
+
+//void Chordfinder::test(long inlet, t_symbol * s, long ac, t_atom * av) {
+//		post("%s in inlet %i (%i args)", s->s_name, inlet, ac);
+//	}
+
 
 //-----------------------------------------------------------------------
 //-----------------------------------------------------------------------

@@ -12,6 +12,11 @@
 C74_EXPORT int main(void) {
     // create a class with the given name:
     Chordfinder::makeMaxClass("chordfinder~");
+    
+    //tell max which methods this object will use
     REGISTER_METHOD(Chordfinder, bang);
-    REGISTER_METHOD_GIMME(Chordfinder, test);
+    REGISTER_METHOD_GIMME(Chordfinder, setRMS);
+    REGISTER_METHOD_GIMME(Chordfinder, rate);
+    
+    //REGISTER_METHOD_GIMME(Chordfinder, test);
 }

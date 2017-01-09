@@ -52,10 +52,19 @@ public:
     void perform(double **ins, long numins, double **outs, long numouts, long sampleframes);
     
     //---------------------max interface methods-----------------------
-    void bang(long inlet);
+    void bang(long inlet); // called when banged
     
+    void setRMS(long inlet, t_symbol * s, long ac, t_atom * av); //use setRMS and an argument to set the RMS cutoff
+    
+    void rate(long inlet, t_symbol * s, long ac, t_atom * av); //set framerate (how many chromagrams to wait before analysing) -- it is by default 1 ( = 512 samples), and increasing it means less CPU and a more sparse analysis
+    
+    void assist(void *b, long m, long a, char *s); //gets called when user hovers over inlets/outlets
+    
+    //void test(long inlet, t_symbol * s, long ac, t_atom * av);
     //-----------------------helper functions--------------------------
-    void test(long inlet, t_symbol * s, long ac, t_atom * av);
+    
+private:
+    
     void midiList(int baseNote, int chordType);
     
 };
