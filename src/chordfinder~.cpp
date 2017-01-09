@@ -6,40 +6,15 @@
 //  Copyright © 2017 Francesco Perticarari. All rights reserved.
 //
 
-#include "maxcpp.h"
-#include "../chord-detector/Chromagram.h"
-#include "../chord-detector/ChordDetector.h"
-
-#include <string>
-#include <sstream>
-#include <iostream>
-#include <vector>
+#include "chordfinder~.hpp"
 
 
-
-// inherit from the MSP base class and build the external using C++ code
-class Chordfinder : public MspCpp<Chordfinder> {
-public:
-    
-    //define frame size and frame rate for chroma-feature analysisis of FFT data
-    int frameSize = 512;
-    int sampleRate = 44100;
-    
-    //create chromagram and chord detector objects
-    Chromagram c;
-    ChordDetector finder;
-    std::vector<double> frame; //FFT-chromogram processing window
-    int samplesTakenIn = 0;
-    std::string chord_name = ""; //string variable to store a chord name
-    
-    int outletsNum = 4; //number of "control" outlets
-    void **	m_outlets = 0; //variable for max (non-audio) outlets -- note: 0 here == nullptr
-
-	Chordfinder(t_symbol * sym, long ac, t_atom * av)
+Chordfinder::Chordfinder(t_symbol * sym, long ac, t_atom * av)
         : c(frameSize, sampleRate), finder() //pass parameters into chromagram object when creating THIS object, then create chord detector object
     {
         c.setChromaCalculationInterval(frameSize); //Set the interval at which the chromagram is calculated in audio frames
         
+        chord_name = "";
         frame.resize(frameSize); //make processing window equal to its appropriate frame_size
         for(int i=0; i<frame.size(); ++i) { frame[i]=0; } //and set its values to zero
         
@@ -50,16 +25,24 @@ public:
         
 		setupIO(2, 2); //setup MSP inlets and oultes
 		post("chordfinder: object created");
-        post("Debugging: current version - 0.05");
+        post("chordfinder: current version - 0.07");
 	}
 	
-	~Chordfinder() {
+	Chordfinder::~Chordfinder() {
 		post("chordfinder: object freed");
 	}	
-	
-	// methods:
-    // default signal processing method is called 'perform'
-    void perform(double **ins, long numins, double **outs, long numouts, long sampleframes) {
+
+//-----------------------------------------------------------------------
+//-----------------------------------------------------------------------
+
+
+// * methods:
+
+//-----------------------------------------------------------------------
+//-----------------------------------------------------------------------
+// default signal processing method is called 'perform'
+
+void Chordfinder::perform(double **ins, long numins, double **outs, long numouts, long sampleframes) {
         // example code to invert inputs
 //        for (long channel = 0; channel < numouts; channel++) {
 //            double * in = ins[channel];
@@ -126,16 +109,22 @@ public:
         }//end_loop
         
     }//end_perform
-    
-	void bang(long inlet) { 
+
+//-----------------------------------------------------------------------
+//-----------------------------------------------------------------------
+//MAX INTERFACE METHODS
+
+void Chordfinder::bang(long inlet) {
 		post("bang in inlet %i!", inlet);
         
 	}
-	void test(long inlet, t_symbol * s, long ac, t_atom * av) { 
+void Chordfinder::test(long inlet, t_symbol * s, long ac, t_atom * av) {
 		post("%s in inlet %i (%i args)", s->s_name, inlet, ac);
 	}
-    
-    //HELPER FUNCTIONS
+
+//-----------------------------------------------------------------------
+//-----------------------------------------------------------------------
+//HELPER FUNCTIONS
 
 	
 //	// optional method: gets called when the dsp chain is modified
@@ -144,11 +133,5 @@ public:
 //		// specify a perform method manually:
 //		REGISTER_PERFORM(Example, perform);
 //	}
-};
 
-C74_EXPORT int main(void) {
-	// create a class with the given name:
-	Chordfinder::makeMaxClass("chordfinder~");
-	REGISTER_METHOD(Chordfinder, bang);
-	REGISTER_METHOD_GIMME(Chordfinder, test);
-}
+
