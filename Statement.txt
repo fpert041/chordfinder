@@ -1,0 +1,38 @@
+For this Assignment I set out to analyse music by retrieving harmonic components and identifying tonal features of music.
+
+I studied verius approaches and eventually settled on working with audio.
+
+Working with scores in fact would pose serious problems when it comes to key analysis and, since the score is not sound but we -as human- interpet it as such, it was something that would have been very difficult to achieve without some machine learning approaches and a lot of data for the models
+(D.Cope - Computer Models of Musical Creativity 2005)
+
+Working with audio has also the advantage of creating a tool which can be used out-of-the-box for live score following, improvisation and harmonisation in performaces.
+
+It can then be expanded using machine learnig, but can work with a more rule-based approach using a chromatic analysis of FFT data (spectrum analysis using a chromagram re-binning)
+
+Having worked extensively with the JS object in max and having already made a piece that used externals for algorithmic composition, this time I wanted to explore the real-time audio realm of MSP
+
+I initially tried with the pfft object that max comes with, as well as with Gen.
+
+The breaktrhough though arrived (perhaps a bit late) when I found out it woas possible to code an external (.mxo) in C++ rather than C.
+
+I found material for Max 6 and updated it for Max 7, rewriting settings and files as I went along. The template is now public on my gitLab http://gitlab.doc.gold.ac.uk/fpert041/maxcpp
+
+The biggest issue was to find a strong enough Algorithm that would work well when wapped up into a set of C++ classes for a Max object
+
+I evaluated the various options and finally settled on the Alex Stark's one, using a very straightforward FFT library (it's called keep-it-simple-stupid so definitely straightforward and light). The KSS library does not have heavy compiled files which may have caused issues with the architecture and can be used by calling just a couple of functions from it clean headers.
+
+ All the components of the Algorithm chosen can be fairly "easily" hard-coded and programmed in just 2 cpp files (plus the library c files).
+
+ The most creative and fun part of all wastesting the results and choosing appropriate values for bias or noise-floor variables. Incidentally, these very variables would be a good starting point for introducing machine learning and back-propagation flexible adjustment into the software.
+
+ Although at the moment I have mostly used my external "in the lab", I have built it with the idea of creating providing easy to use information for live harmonisation and melody generation (as well as to study the harmonic content of sound).
+
+see Readme.md for further info on how the object works
+
+ 
+
+LINK TO DEMOSTRATION VIDEO: https://youtu.be/rSSXzX0vQe4
+
+
+
+Francesco Perticarari
