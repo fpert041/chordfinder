@@ -6,7 +6,7 @@
 
 #include "newChromagram.h"
 
-//==================================================================================
+//-----------------------------------------------------------------------------------
 newChromagram::newChromagram(int frameSize,int fs) : referenceFrequency(130.81278265), bufferSize(8192), numHarmonics(2), numOctaves(2), numBinsToSearch(2)
 {
     // calculate note frequencies
@@ -54,7 +54,7 @@ newChromagram::newChromagram(int frameSize,int fs) : referenceFrequency(130.8127
     
 }
 
-//==================================================================================
+//-----------------------------------------------------------------------------------
 newChromagram::~newChromagram()
 {
 
@@ -66,7 +66,7 @@ newChromagram::~newChromagram()
 
 }
 
-//==================================================================================
+//-----------------------------------------------------------------------------------
 void newChromagram::processAudioFrame(double *inputAudioFrame)
 {
     // create a vector
@@ -79,7 +79,7 @@ void newChromagram::processAudioFrame(double *inputAudioFrame)
     processAudioFrame(v);
 }
 
-//==================================================================================
+//-----------------------------------------------------------------------------------
 void newChromagram::processAudioFrame(std::vector<double> inputAudioFrame)
 {
     // our default state is that the chroma is not ready
@@ -117,7 +117,7 @@ void newChromagram::processAudioFrame(std::vector<double> inputAudioFrame)
     
 }
 
-//==================================================================================
+//-----------------------------------------------------------------------------------
 void newChromagram::setInputAudioFrameSize(int frameSize)
 {
     inputAudioFrameSize = frameSize;
@@ -127,31 +127,31 @@ void newChromagram::setInputAudioFrameSize(int frameSize)
     downSampledAudioFrameSize = (int) downsampledInputAudioFrame.size();
 }
 
-//==================================================================================
+//-----------------------------------------------------------------------------------
 void newChromagram::setSamplingFrequency(int fs)
 {
     samplingFrequency = fs;
 }
 
-//==================================================================================
+//-----------------------------------------------------------------------------------
 void newChromagram::setChromaCalculationInterval(int numSamples)
 {
     chromaCalculationInterval = numSamples;
 }
 
-//==================================================================================
+//-----------------------------------------------------------------------------------
 std::vector<double> newChromagram::getChromagram()
 {
     return chromagram;
 }
 
-//==================================================================================
+//-----------------------------------------------------------------------------------
 bool newChromagram::isReady()
 {
     return chromaReady;
 }
 
-//==================================================================================
+//-----------------------------------------------------------------------------------
 void newChromagram::setupFFT()
 {
 
@@ -163,7 +163,7 @@ void newChromagram::setupFFT()
 }
 
 
-//==================================================================================
+//-----------------------------------------------------------------------------------
 void newChromagram::calculateChromagram()
 {
     calculateMagnitudeSpectrum();
@@ -206,7 +206,7 @@ void newChromagram::calculateChromagram()
     chromaReady = true;
 }
 
-//==================================================================================
+//-----------------------------------------------------------------------------------
 void newChromagram::calculateMagnitudeSpectrum()
 {
     int i = 0;
@@ -228,7 +228,7 @@ void newChromagram::calculateMagnitudeSpectrum()
     }
 }
 
-//==================================================================================
+//-----------------------------------------------------------------------------------
 void newChromagram::downSampleFrame(std::vector<double> inputAudioFrame)
 {
     std::vector<double> filteredFrame(inputAudioFrameSize);
@@ -262,7 +262,7 @@ void newChromagram::downSampleFrame(std::vector<double> inputAudioFrame)
         downsampledInputAudioFrame[i] = filteredFrame[i*4];
     }
 }
-//==================================================================================
+//-----------------------------------------------------------------------------------
 void newChromagram::makeHammingWindow()
 {
     // set the window to the correct size

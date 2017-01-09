@@ -14,10 +14,10 @@
 
 #include "kiss_fft.h"
 
+//-----------------------------------------------------------------------------------
+//A class for calculating a Chromagram from input audio in a real-time context
+//-----------------------------------------------------------------------------------
 
-//=======================================================================
-/** A class for calculating a Chromagram from input audio
- * in a real-time context */
 class newChromagram
 {
     
@@ -118,4 +118,4 @@ private:
     kiss_fft_cpx *fftOut;
 };
 
-#endif /* defined(__CHROMAGRAM_H) */
+#endif /* defined(__NEWCHROMAGRAM_H) */

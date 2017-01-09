@@ -1,9 +1,9 @@
 //
-//  chordfinder~.h
-//  chordfinder~
+//  CHORDFINDER
+//  Max MSP External for harmonical analysis of an audio signal
+//  Based on an implementation of the work by Adam Stark and using the C++ template "MaxCpp"
 //
-//  Created by Francesco Perticarari on 09/01/2017.
-//
+//  Copyright © 2017 Francesco Perticarari. All rights reserved.
 //
 
 #ifndef chordfinder__hpp
@@ -17,6 +17,10 @@
 #include <sstream>
 #include <iostream>
 #include <vector>
+
+//-----------------------------------------------------------------------------------
+// The external wrapper class
+//-----------------------------------------------------------------------------------
 
 // inherit from the MSP base class and build the external using C++ code
 class Chordfinder : public MspCpp<Chordfinder> {

@@ -21,8 +21,6 @@
 		C7E1079B1E22CBE000D55B23 /* newChromagram.h in Headers */ = {isa = PBXBuildFile; fileRef = C7E107971E22CBE000D55B23 /* newChromagram.h */; };
 		C7E1079D1E22D19900D55B23 /* maxcpp.h in Headers */ = {isa = PBXBuildFile; fileRef = C7E1079C1E22D19900D55B23 /* maxcpp.h */; };
 		C7E1079F1E22D1AA00D55B23 /* max.attr.h in Headers */ = {isa = PBXBuildFile; fileRef = C7E1079E1E22D1AA00D55B23 /* max.attr.h */; };
-		C7E107A61E2309F000D55B23 /* newChordDetector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C7E107A41E2309F000D55B23 /* newChordDetector.cpp */; };
-		C7E107A71E2309F000D55B23 /* newChordDetector.hpp in Headers */ = {isa = PBXBuildFile; fileRef = C7E107A51E2309F000D55B23 /* newChordDetector.hpp */; };
 		C7E107AA1E2363A500D55B23 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C7E107A81E2363A500D55B23 /* main.cpp */; };
 		C7E107AB1E2363A500D55B23 /* main.hpp in Headers */ = {isa = PBXBuildFile; fileRef = C7E107A91E2363A500D55B23 /* main.hpp */; };
 		C7E107AD1E2363FF00D55B23 /* chordfinder~.hpp in Headers */ = {isa = PBXBuildFile; fileRef = C7E107AC1E2363FF00D55B23 /* chordfinder~.hpp */; };
@@ -46,8 +44,6 @@
 		C7E107971E22CBE000D55B23 /* newChromagram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = newChromagram.h; sourceTree = "<group>"; };
 		C7E1079C1E22D19900D55B23 /* maxcpp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = maxcpp.h; sourceTree = "<group>"; };
 		C7E1079E1E22D1AA00D55B23 /* max.attr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = max.attr.h; sourceTree = "<group>"; };
-		C7E107A41E2309F000D55B23 /* newChordDetector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = newChordDetector.cpp; sourceTree = "<group>"; };
-		C7E107A51E2309F000D55B23 /* newChordDetector.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = newChordDetector.hpp; sourceTree = "<group>"; };
 		C7E107A81E2363A500D55B23 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		C7E107A91E2363A500D55B23 /* main.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = main.hpp; sourceTree = "<group>"; };
 		C7E107AC1E2363FF00D55B23 /* chordfinder~.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = "chordfinder~.hpp"; sourceTree = "<group>"; };
@@ -133,8 +129,6 @@
 		C7E107931E22CBE000D55B23 /* chord-detector */ = {
 			isa = PBXGroup;
 			children = (
-				C7E107A41E2309F000D55B23 /* newChordDetector.cpp */,
-				C7E107A51E2309F000D55B23 /* newChordDetector.hpp */,
 				C7E107941E22CBE000D55B23 /* ChordDetector.cpp */,
 				C7E107951E22CBE000D55B23 /* ChordDetector.h */,
 				C7E107961E22CBE000D55B23 /* newChromagram.cpp */,
@@ -152,7 +146,6 @@
 			files = (
 				C7E107AD1E2363FF00D55B23 /* chordfinder~.hpp in Headers */,
 				C7E1078D1E22C9A300D55B23 /* _kiss_fft_guts.h in Headers */,
-				C7E107A71E2309F000D55B23 /* newChordDetector.hpp in Headers */,
 				C7E1079F1E22D1AA00D55B23 /* max.attr.h in Headers */,
 				C7E107901E22C9A300D55B23 /* kiss_fft.h in Headers */,
 				C7E107911E22C9A300D55B23 /* kissfft.hh in Headers */,
@@ -239,7 +232,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C7E1079A1E22CBE000D55B23 /* newChromagram.cpp in Sources */,
-				C7E107A61E2309F000D55B23 /* newChordDetector.cpp in Sources */,
 				C7E107AA1E2363A500D55B23 /* main.cpp in Sources */,
 				C7E107981E22CBE000D55B23 /* ChordDetector.cpp in Sources */,
 				C7E1078F1E22C9A300D55B23 /* kiss_fft.c in Sources */,

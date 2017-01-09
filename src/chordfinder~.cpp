@@ -8,6 +8,10 @@
 
 #include "chordfinder~.hpp"
 
+//-----------------------------------------------------------------------------------
+// The external body
+//-----------------------------------------------------------------------------------
+
 
 Chordfinder::Chordfinder(t_symbol * sym, long ac, t_atom * av)
         : c(frameSize, sampleRate), finder() //pass parameters into chromagram object when creating THIS object, then create chord detector object
@@ -57,7 +61,7 @@ void Chordfinder::perform(double **ins, long numins, double **outs, long numouts
         double * in1 = ins[1];
         double * out1 = outs[1];
             
-        for (long i=0; i < sampleframes; i++) {
+        for (long i=0; i < sampleframes; ++i) {
             out0[i] = in0[i]; //passthrough signal ch 1
             out1[i] = in1[i]; //passthrough signal ch 2
                     
@@ -69,8 +73,12 @@ void Chordfinder::perform(double **ins, long numins, double **outs, long numouts
                         c.processAudioFrame(frame); //then process the buffer to extract a chromogram
                         
                         if (c.isReady()) { //if the chroma-feature spectrum is ready
+                            
+                            // ** WARNING: HERE I USE A C-STYLE ARRAY, but the object supports vectors
+                            // MAKE SURE POINTERS DON'T MESS UP THE CODE --play safe if needed
                             std::vector<double> chroma = c.getChromagram(); //define vector to store chroma-feature
-                            finder.detectChord(chroma); //call the chord detection function using the current chromagram
+                            finder.detectChord(&chroma[0]); //call the chord detection function using the current chromagram (use the array/pointer type for efficiency)
+                            
                             
                             /** The root note of the detected chord */
                             int rootN = finder.rootNote;

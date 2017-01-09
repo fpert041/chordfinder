@@ -4,18 +4,25 @@
 A chord identifier C++ external for Max MSP
 
 
+# WARNING: 
+This repo is a work in progress!!!
 
-WARNING: This repo is a work in progress!!!
-
-NOTE: This is not a self-contained project and should be used in tandem with my MaxCpp within the Max 7 SDK.
+## NOTE: 
+This is not a self-contained project and should be used in tandem with my MaxCpp within the Max 7 SDK.
 To compile iot and use it:
+
     1) download the SDK from Cycling 74
+
     2) download [MaxCpp](http://gitlab.doc.gold.ac.uk/fpert041/maxcpp) 
+
     3) place the SDK within the Max source path
+
     4) place this repo within the "MyExternals" folder inside MaxCpp
 
 
-REFERENCE: This project will probably use KISS_FFT, MaxCpp (my update on Graham Wakefield's original), the Chromogram/Chord detector algorithms defined by Adam Stark, as well as the Max 7 SDK (by Cycling '74) -- all the credit for these open-source files should be give to their authors
+
+## REFERENCE: 
+This project will probably use KISS_FFT, MaxCpp (my update on Graham Wakefield's original), the Chromogram/Chord detector algorithms defined by Adam Stark, as well as the Max 7 SDK (by Cycling '74) -- all the credit for these open-source files should be give to their authors
 
 
 
