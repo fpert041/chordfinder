@@ -12,7 +12,6 @@
 // The external body
 //-----------------------------------------------------------------------------------
 
-
 Chordfinder::Chordfinder(t_symbol * sym, long ac, t_atom * av)
         : c(frameSize, sampleRate), finder() //pass parameters into chromagram object when creating THIS object, then create chord detector object
     {
