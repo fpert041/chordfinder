@@ -145,6 +145,8 @@ void Chordfinder::bang(long inlet) {
     
 }
 
+//-----------------------------------------------------------------------
+
 void Chordfinder::setRMS(long inlet, t_symbol * s, long ac, t_atom * av) {
     // set the rms cutoff value (float)
     
@@ -158,6 +160,8 @@ void Chordfinder::setRMS(long inlet, t_symbol * s, long ac, t_atom * av) {
         RMSCutoff = this_number; //set RMS cutoff to the specified one
     }
 }
+
+//-----------------------------------------------------------------------
 
 //reset frame rate of the chroma calculation interval (multiples of 512 sample-windows)
 void Chordfinder::rate(long inlet, t_symbol * s, long ac, t_atom * av) {
@@ -174,6 +178,8 @@ void Chordfinder::rate(long inlet, t_symbol * s, long ac, t_atom * av) {
     //post("chordfinder: current frame rate: %ld");
 }
 
+//-----------------------------------------------------------------------
+
 //inlet/outlet assist popup
 void Chordfinder::assist(void *b, long m, long a, char *s) { //template function that gets triggered when "ASSIST_INLET"
                                                             //is invoked by Max
@@ -181,25 +187,31 @@ void Chordfinder::assist(void *b, long m, long a, char *s) { //template function
     if (m == ASSIST_INLET) { //inlet
         switch (a) {
             case 0: sprintf(s,
-                            "\nrate <int> - set the number of 512 sample frames to allow prior to chord identification\nrms <float> - set the rms cutoff value");
+                            "\nsignal in <sig> \nrate <int> - set the number of 512 sample frames to allow prior to chord identification \nrms <float> - set the rms cutoff value");
+                break;
+            case 1: sprintf(s, "\nsignal in <sig>");
                 break;
         }
     }
     else {	// outlet
         switch (a) {
-            case 0 : sprintf(s, "signal out");
+            case 0 : sprintf(s, "signal out L");
                 break;
-            case 1: sprintf(s, "text Chordname");
+            case 1 : sprintf(s, "signal out R");
                 break;
-            case 2: sprintf(s, "int chord id");
+            case 2: sprintf(s, "text Chordname");
                 break;
-            case 3: sprintf(s, "list midi notes of chord");
+            case 3: sprintf(s, "int chord id");
                 break;
-            case 4: sprintf(s, "signal - 0 for no recognisable signal, 1 otherwise");
+            case 4: sprintf(s, "list midi notes of chord");
+                break;
+            case 5: sprintf(s, "signal - 0 for no recognisable signal, 1 otherwise");
                 break;
         }
     }
 }
+
+//-----------------------------------------------------------------------
 
 //void Chordfinder::test(long inlet, t_symbol * s, long ac, t_atom * av) {
 //		post("%s in inlet %i (%i args)", s->s_name, inlet, ac);
@@ -230,7 +242,7 @@ void Chordfinder::midiList(int baseNote, int chordType) {
         }
     }
     
-    outlet_anything(m_outlets[2], gensym("midi_notes"), noteCount, &outList[0]); //output list out of the generic max outlet "2"
+    outlet_anything(m_outlets[2], gensym(""), noteCount, &outList[0]); //output list out of the generic max outlet "2"
 }
 
 	

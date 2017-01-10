@@ -17,6 +17,7 @@ C74_EXPORT int main(void) {
     REGISTER_METHOD(Chordfinder, bang);
     REGISTER_METHOD_GIMME(Chordfinder, setRMS);
     REGISTER_METHOD_GIMME(Chordfinder, rate);
+    REGISTER_METHOD_ASSIST(Chordfinder, assist);
     
     //REGISTER_METHOD_GIMME(Chordfinder, test);
 }
